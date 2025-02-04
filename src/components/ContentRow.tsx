@@ -31,11 +31,11 @@ const ContentRow = ({ title, movies }: ContentRowProps) => {
   };
 
   return (
-    <div className="space-y-2 md:space-y-4">
-      <h2 className="text-xl md:text-2xl font-semibold text-white pl-4 md:pl-16">{title}</h2>
-      <div className="group relative">
+    <div className="space-y-1 md:space-y-2">
+      <h2 className="text-lg md:text-2xl font-semibold text-white pl-4 md:pl-16 transition duration-200">{title}</h2>
+      <div className="group relative md:-ml-2">
         <ChevronLeft
-          className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 ${
+          className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 text-white ${
             !isMoved && "hidden"
           }`}
           onClick={() => handleClick("left")}
@@ -43,7 +43,7 @@ const ContentRow = ({ title, movies }: ContentRowProps) => {
 
         <div
           ref={rowRef}
-          className="flex items-center space-x-2 overflow-x-scroll scrollbar-hide md:space-x-4 md:p-4"
+          className="flex items-center space-x-0.5 overflow-x-scroll scrollbar-hide md:space-x-2.5 md:p-2"
         >
           {movies.map((movie) => (
             <div
@@ -53,14 +53,15 @@ const ContentRow = ({ title, movies }: ContentRowProps) => {
               <img
                 src={movie.image}
                 alt={movie.title}
-                className="rounded-sm object-cover md:rounded"
+                className="rounded-sm object-cover md:rounded hover:rounded-sm"
+                loading="lazy"
               />
             </div>
           ))}
         </div>
 
         <ChevronRight
-          className="absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100"
+          className="absolute top-0 bottom-0 right-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100 text-white"
           onClick={() => handleClick("right")}
         />
       </div>
